@@ -13,14 +13,9 @@ class Heroes {
   buttonPencil = "[data-cy='pencil']";
   buttonTrash = "[data-cy='trash']";
   buttonYes = "button.bg-red-600";
-/*
-  clickButtonNewHero() {
-    
-    cy.url().should("eq", "http://localhost:3000/heroes/new");
-  }
-*/
+
   creatHero(_name) {
-   // cy.get(this.buttonCreateNewHero).click();
+    cy.get(this.buttonCreateNewHero).click();
     cy.get(this.inputName).type(_name);
     cy.get(this.inputPrice).type("0");
     cy.get(this.inputFans).type("0");
@@ -33,19 +28,18 @@ class Heroes {
   readHero() {
     cy.visit("/");
   }
-  
+
   updateHero() {
     cy.visit("/");
-    cy.createSession();
     cy.get(this.buttonPencil).eq(0).click();
+    cy.get(this.inputName).type(" Update Name");
+    cy.get(this.buttonSubmit).click();
   }
 
   deleteHero() {
     cy.visit("/");
+    cy.get(this.buttonTrash).eq(7).click();
+    cy.get("button").contains("Yes").click();
   }
-
-
-
-
 }
 export default Heroes;
