@@ -1,0 +1,26 @@
+{
+  "name": "heroes-cypress-exercicio-rc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm --prefix ./client run build && npm --prefix ./server run build",
+    "setup": "npm run resetdb",
+    "resetdb": "npm --prefix ./server run prisma:resetdb",
+    "dev": "concurrently \"npm --prefix ./client run dev\" \"npm --prefix ./server run start:dev\"",
+    "start:ci": "concurrently \"npm --prefix ./client run preview\" \"npm --prefix ./server run start:ci\"",
+    "test:e2e:ci": "npm --prefix ./client run test:e2e:ci",
+    "test:api:ci": "npm --prefix ./server run test:api:ci",
+    "test:ct:ci": "npm --prefix ./client run test:ct:ci",
+    "cy:open:chrome": "npx cypress open --browser chrome",
+    "cy:run:chrome": "npx cypress run --browser chrome",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "cypress-mochawesome-reporter": "^3.8.2"
+  }
+}
